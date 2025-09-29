@@ -1,6 +1,7 @@
 import { Web3 } from "web3";
 
 const API_KEY = process.env["REACT_APP_PROXY_MULTISENDER_XSCAN_API_KEY"];
+const API_V2_BASE_URL = "https://api.etherscan.io/v2/api";
 
 const getAccounts = () => {
   return new Promise(function (resolve, reject) {
@@ -50,111 +51,90 @@ let getWeb3 = () => {
               netId = netId.toString();
               console.log("netId", netId);
               switch (netId) {
-                case "1":
+                case "1": // Ethereum Mainnet
                   netIdName = "Mainnet";
                   trustApiName = "api";
                   explorerUrl = "https://etherscan.io";
-                  explorerAPIUrl =
-                    "https://api.etherscan.io/v2/api?chainid=1&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.etherscan.io/v2/api?chainid=1&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=1&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=1&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "ETH";
                   currencyTickerName = "Ether";
                   blockchainName = "Ethereum";
                   console.log("This is Foundation", netId);
                   break;
-                case "11155111":
+
+                case "11155111": // Sepolia
                   netIdName = "Sepolia";
                   trustApiName = "sepolia";
                   explorerUrl = "https://sepolia.etherscan.io";
-                  explorerAPIUrl =
-                    "https://api-sepolia.etherscan.io/v2/api?chainid=11155111&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.etherscan.io/v2/api?chainid=1&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=11155111&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=11155111&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "ETH";
                   currencyTickerName = "Ether";
                   blockchainName = "Ethereum Sepolia Testnet";
                   console.log("This is Sepolia", netId);
                   break;
-                case "17000":
+
+                case "17000": // Holesky
                   netIdName = "Holesky";
                   trustApiName = "holesky";
                   explorerUrl = "https://holesky.etherscan.io";
-                  explorerAPIUrl =
-                    "https://api-holesky.etherscan.io/v2/api?chainid=17000&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.etherscan.io/v2/api?chainid=1&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=17000&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=17000&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "ETH";
                   currencyTickerName = "Ether";
                   blockchainName = "Ethereum Holesky Testnet";
                   console.log("This is Holesky", netId);
                   break;
-                case "56":
+
+                case "56": // BSC Mainnet
                   netIdName = "BSC";
                   trustApiName = "bsc";
                   explorerUrl = "https://bscscan.com";
-                  explorerAPIUrl =
-                    "https://api.bscscan.com/v2/api?chainid=56&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.bscscan.com/v2/api?chainid=56&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=56&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=56&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "BNB";
                   currencyTickerName = "BNB";
                   blockchainName = "Binance Smart Chain";
                   console.log("This is Binance Smart Chain", netId);
                   break;
-                case "97":
+
+                case "97": // BSC Testnet
                   netIdName = "BSCTest";
                   trustApiName = "bsctest";
                   explorerUrl = "https://testnet.bscscan.com";
-                  explorerAPIUrl =
-                    "https://api-testnet.bscscan.com/v2/api?chainid=97&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.bscscan.com/v2/api?chainid=56&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=97&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=97&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "BNB";
                   currencyTickerName = "BNB";
                   blockchainName = "Binance Smart Chain Test";
                   console.log("This is Binance Smart Chain Test", netId);
                   break;
-                case "137":
+
+                case "137": // Polygon Mainnet
                   netIdName = "Polygon";
                   trustApiName = "polygon";
                   explorerUrl = "https://polygonscan.com";
-                  explorerAPIUrl =
-                    "https://api.polygonscan.com/v2/api?chainid=137&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.polygonscan.com/v2/api?chainid=137&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=137&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=137&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "MATIC";
                   currencyTickerName = "MATIC";
                   blockchainName = "Polygon";
                   console.log("This is Polygon", netId);
                   break;
-                case "80002":
+
+                case "80002": // Polygon Amoy Testnet
                   netIdName = "Amoy";
                   trustApiName = "polygon";
                   explorerUrl = "https://amoy.polygonscan.com";
-                  explorerAPIUrl =
-                    "https://api-amoy.polygonscan.com/v2/api?chainid=80002&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=" +
-                    API_KEY;
-                  gasPriceAPIUrl =
-                    "https://api.polygonscan.com/v2/api?chainid=137&module=gastracker&action=gasoracle&apikey=" +
-                    API_KEY;
+                  explorerAPIUrl = `${API_V2_BASE_URL}?chainid=80002&module=account&action=tokentx&address=%1$s&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`;
+                  gasPriceAPIUrl = `${API_V2_BASE_URL}?chainid=80002&module=gastracker&action=gasoracle&apikey=${API_KEY}`;
                   currencyTicker = "MATIC";
                   currencyTickerName = "MATIC";
                   blockchainName = "Polygon Amoy";
                   console.log("This is Polygon Amoy Testnet", netId);
                   break;
+
                 default:
                   netIdName = "Unknown";
                   console.log("This is an unknown network.", netId);
