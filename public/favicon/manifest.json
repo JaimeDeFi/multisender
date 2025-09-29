@@ -1,6 +1,7 @@
 {
-  "short_name": "Token MultiSender",
-  "name": "Save on tx fees with ERC20 MultiSender",
+  "short_name": "MultiSender",
+  "name": "Token MultiSender DApp",
+  "description": "Send tokens to multiple addresses in one transaction",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,7 +9,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
